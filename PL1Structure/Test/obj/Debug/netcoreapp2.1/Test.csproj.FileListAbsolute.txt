@@ -1,0 +1,14 @@
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\Test.deps.json
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\Test.runtimeconfig.json
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\Test.runtimeconfig.dev.json
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\Test.dll
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\Test.pdb
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.csprojAssemblyReference.cache
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.csproj.CoreCompileInputs.cache
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.AssemblyInfoInputs.cache
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.AssemblyInfo.cs
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.dll
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.pdb
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\PL1Structure.dll
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\bin\Debug\netcoreapp2.1\PL1Structure.pdb
+C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\Test\obj\Debug\netcoreapp2.1\Test.csproj.CopyComplete
