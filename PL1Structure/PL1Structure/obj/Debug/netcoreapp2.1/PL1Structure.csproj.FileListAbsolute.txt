@@ -1,9 +1,0 @@
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\bin\Debug\netcoreapp2.1\PL1Structure.deps.json
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\bin\Debug\netcoreapp2.1\PL1Structure.dll
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\bin\Debug\netcoreapp2.1\PL1Structure.pdb
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.csproj.CoreCompileInputs.cache
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.AssemblyInfoInputs.cache
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.AssemblyInfo.cs
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.dll
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.pdb
-C:\Users\HanHan\Documents\Projekte\PrototypTarskiWorld\PL1Structure\PL1Structure\obj\Debug\netcoreapp2.1\PL1Structure.csprojAssemblyReference.cache
