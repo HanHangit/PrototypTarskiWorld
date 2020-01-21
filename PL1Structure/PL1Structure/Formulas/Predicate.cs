@@ -23,9 +23,8 @@ namespace PL1Structure
         {
             _arguments = arguments;
             _identifier = identifier;
-        } 
+        }
 
         #endregion
-
     }
 }
