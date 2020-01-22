@@ -11,13 +11,14 @@ public class Debug_ModelParser : MonoBehaviour
 
     private void Start()
     {
-        var result = ModelParser.ParseSentences(_input);
+        Result<Formula>[] result = ModelParser.ParseSentences(_input);
 
         if(result.IsValid)
             if(result.Value[0] is Predicate predicate)
             {
                 Debug.Log("Predicate:" + predicate.Identifier);
                 Debug.Log("Argument:" + ((Constant)predicate.Arguments[0]).Value);
-            }                
+            }
+        }
     }
 }
