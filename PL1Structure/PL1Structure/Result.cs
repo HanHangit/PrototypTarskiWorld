@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PL1Structure
 {
-    public class Result<T> where T : class
+    public class Result<T>
     {
         #region Variables & Getter
 
@@ -14,7 +14,7 @@ namespace PL1Structure
         private bool _isValid = true;
         public bool IsValid => _isValid;
 
-        private T _value = null;
+        private T _value = default(T);
         public T Value => _value;
 
         #endregion
