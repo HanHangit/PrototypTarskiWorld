@@ -15,16 +15,16 @@ namespace PL1Structure
             Result<List<bool>> result = Result<List<bool>>.CreateResult(false, null, "Something wrong in " + nameof(ValidateModel));
             List<bool> modelResults = new List<bool>();
 
-            if (!parseSentences.IsValid)
-                result = Result<List<bool>>.CreateResult(false, null, parseSentences.Message);
-            else if (!parseDataStructures.IsValid)
+            if (!parseDataStructures.IsValid)
                 result = Result<List<bool>>.CreateResult(false, null, parseDataStructures.Message);
             else
             {
-                foreach (var formulaSentence in parseSentences.Value)
+                foreach (var formulaSentence in parseSentences)
                 {
+                    if (!formulaSentence.IsValid)
+                        result = Result<List<bool>>.CreateResult(false, null, formulaSentence.Message);
                     bool isSentenceTrue = false;
-                    Predicate predicateSentence = formulaSentence as Predicate;
+                    Predicate predicateSentence = formulaSentence.Value as Predicate;
                     foreach (var dataSentence in parseDataStructures.Value)
                         foreach (var pred in dataSentence.Predicates)
                             if (pred.Equals(predicateSentence))
