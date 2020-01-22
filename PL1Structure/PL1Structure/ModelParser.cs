@@ -47,25 +47,33 @@ namespace PL1Structure
 
         #region Public
 
-        public static Result<Formula>[] ParseSentences(params string[] input)
+        public static Result<Formula[]> ParseSentences(List<string> input) => ParseSentences(input.ToArray());
+
+        public static Result<Formula[]> ParseSentences(params string[] input)
         {
-            Result<Formula>[] result = null;
+            Result<Formula[]> result = null;
 
             if (input == null || input.Length == 0)
-                result = new Result<Formula>[] { Result<Formula>.CreateResult(false, null, "Input string is null or empty") };
+                result = Result<Formula[]>.CreateResult(false, null, "Input string is null or empty");
             else
             {
-                result = new Result<Formula>[input.Length];
+                Formula[] formulas = new Formula[input.Length];
                 for (int i = 0; i < input.Length; i++)
                 {
                     string sentence = input[i];
                     Result<Predicate> predicate = CreateSinglePredicate(sentence);
 
                     if (predicate.IsValid && predicate.HasValue)
-                        result[i] = Result<Formula>.CreateResult(true, predicate.Value);
+                        formulas[i] = predicate.Value;
                     else
-                        result[i] = Result<Formula>.CreateResult(false, null, predicate.Message);
+                    {
+
+                        formulas = null;
+                        result = Result<Formula[]>.CreateResult(false, null, predicate.Message);
+                    }
                 }
+                if (formulas != null)
+                    result = Result<Formula[]>.CreateResult(true, formulas);
             }
 
             return result;

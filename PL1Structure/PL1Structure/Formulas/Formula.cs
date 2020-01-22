@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PL1Structure
 {
-    public class Formula
+    public abstract class Formula
     {
         #region Variables & Getters
 
