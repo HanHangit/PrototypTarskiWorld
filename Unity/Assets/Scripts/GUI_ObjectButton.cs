@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class GUI_ObjectButton : MonoBehaviour
 {
+	public enum ETyp
+	{
+		None, Identifier, Praedicat
+	}
+
+	[SerializeField]
+	public ETyp _currentTyp = default;
+
     [SerializeField]
     private Button _button = default;
 
@@ -22,4 +30,9 @@ public class GUI_ObjectButton : MonoBehaviour
     {
         return _identifier;
     }
+
+	public ETyp GetCurrentTyp()
+	{
+		return _currentTyp;
+	}
 }

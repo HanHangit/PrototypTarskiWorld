@@ -42,7 +42,7 @@ public class GUI_SpawnDragableElement : MonoBehaviour, IBeginDragHandler, IDragH
 
             if (dragableTarget != null)
             {
-                dragableTarget.OnDragEnd(_objectButton.GetSprite(), _objectButton.GetIdentifier());
+                dragableTarget.OnDragEnd(_objectButton.GetSprite(), _objectButton.GetIdentifier(), _objectButton.GetCurrentTyp());
             }
         }
         Destroy(_dragInstance.gameObject);

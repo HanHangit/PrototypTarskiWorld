@@ -61,6 +61,11 @@ public class GUI_MapSize : MonoBehaviour
             {
                 Debug.Log("Identifier: " + identifier);
             }
+
+			foreach (var constant in item.ConstantList)
+			{
+				Debug.Log("Constant: " + constant);
+			}
         }
     }
 }

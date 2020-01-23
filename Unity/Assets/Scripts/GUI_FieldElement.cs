@@ -12,12 +12,14 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
     [SerializeField]
     private int _posY = 0;
     private List<string> _identifier = new List<string>();
-    [SerializeField]
+	private List<string> _praedicats = new List<string>();
+	[SerializeField]
     private TextMeshProUGUI _positionText = default;
     [SerializeField]
     private Button _button = default;
     [SerializeField]
     private Image _elementImage = default;
+	private bool _hasElement = false;
 
     public event EventHandler<FieldElementEventArgs> FieldSelectChangedEvent;
 
@@ -47,28 +49,52 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
 
     private void ButtonClicked()
     {
+	
 
     }
+
+	private void ResetField()
+	{
+		
+	}
 
     protected virtual void Intern_OnTestEvent(FieldElementEventArgs args)
     {
         FieldSelectChangedEvent?.Invoke(this, args);
     }
 
-    public void OnDragEnd(Sprite image, string identifier)
+    public void OnDragEnd(Sprite image, string identifier, GUI_ObjectButton.ETyp type)
     {
-        _elementImage.sprite = image;
+		switch (type)
+		{
+			case GUI_ObjectButton.ETyp.None:
+				Debug.Log("Type not defined");
+				break;
+			case GUI_ObjectButton.ETyp.Identifier:
+				_identifier.Add(identifier);
+				break;
+			case GUI_ObjectButton.ETyp.Praedicat:
+				_praedicats.Add(identifier);
+				break;
+			default:
+				break;
+		}
+		_elementImage.sprite = image;
         _elementImage.gameObject.SetActive(true);
-        _identifier.Add(identifier);
-        Intern_OnTestEvent(new FieldElementEventArgs(new Tuple<int, int>(_posX, _posY), _identifier, new List<string>(), true));
-    }
 
+		if(!_hasElement)
+			Intern_OnTestEvent(new FieldElementEventArgs(new Tuple<int, int>(_posX, _posY), _identifier, _praedicats, true));
+		_hasElement = true;
+	}
+
+	[System.Serializable]
     public class FieldElementEventArgs : EventArgs
     {
         public Tuple<int, int> Position;
         public bool IsRemoving;
         public List<string> Identifier;
         public List<string> ConstantList;
+
         public FieldElementEventArgs(Tuple<int, int> position, List<string> identifier, List<string> constantList, bool isRemoving)
         {
             Position = position;
@@ -81,5 +107,5 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
 
 public interface IDragableTarget
 {
-    void OnDragEnd(Sprite _image, string  _identifier);
+    void OnDragEnd(Sprite _image, string  _identifier, GUI_ObjectButton.ETyp type);
 }

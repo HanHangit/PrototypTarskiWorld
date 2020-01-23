@@ -32,18 +32,18 @@ public class GUI_TextInputField : MonoBehaviour
             }
         }
 
-        Result<Formula>[] result = ModelParser.ParseSentences(results.ToArray());
-        foreach (var item in result)
-        {
-            if (item.IsValid)
-            {
-                Debug.Log(item.IsValid);
-            }
-            else
-            {
-                Debug.Log(item.Message);
-            }
-        }
+        //Result<Formula>[] result = ModelParser.ParseSentences(results.ToArray());
+        //foreach (var item in result)
+        //{
+        //    if (item.IsValid)
+        //    {
+        //        Debug.Log(item.IsValid);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(item.Message);
+        //    }
+        //}
     }
     private void Awake()
     {
