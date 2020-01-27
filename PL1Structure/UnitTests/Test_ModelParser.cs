@@ -8,6 +8,16 @@ namespace Tests
     public class Test_ModelParser
     {
         [Test]
+        public void ModelParser_ParseMultipleSentence_InvalidPredicate()
+        {
+            List<string> _testSentence = new List<string> { "Tet(a)", "dwfg(" };
+            Result<Formula>[] resultFormula = ModelParser.ParseSentences(_testSentence);
+
+            Assert.IsTrue(resultFormula[0].IsValid);
+            Assert.IsFalse(resultFormula[1].IsValid);
+        }
+
+        [Test]
         public void ModelParser_ParseSentence_InvalidPredicate()
         {
             string _testSentence = "Teta";

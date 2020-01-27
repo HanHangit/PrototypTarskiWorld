@@ -51,27 +51,22 @@ namespace PL1Structure
 
         public static Result<Formula>[] ParseSentences(params string[] input)
         {
-            Result<Formula>[] result = null;
+            Result<Formula>[] result = new Result<Formula>[input.Length];
 
             if (input != null && input.Length > 0)
             {
-                Result<Formula>[] formulas = new Result<Formula>[input.Length];
                 for (int i = 0; i < input.Length; i++)
                 {
                     string sentence = input[i];
                     Result<Predicate> predicate = CreateSinglePredicate(sentence);
 
                     if (predicate.IsValid && predicate.HasValue)
-                        formulas[i] = Result<Formula>.CreateResult(true, predicate.Value);
+                        result[i] = Result<Formula>.CreateResult(true, predicate.Value);
                     else
                     {
-                        formulas = null;
-                        result = new Result<Formula>[] { Result<Formula>.CreateResult(false, null, predicate.Message) };
-                        break;
+                        result[i] = Result<Formula>.CreateResult(false, null, predicate.Message);
                     }
                 }
-                if (formulas != null)
-                    result = formulas;
             }
 
             return result;
