@@ -36,8 +36,8 @@ namespace Tests
         [Test]
         public void ModelValidater_ValidateOnePredicateOneSentence_IsTrue()
         {
-            List<string> sentences = new List<string> { "Tet(a)" };
-            List<string> arguments = new List<string> { "a" };
+            List<string> sentences = new List<string> { "Tet(A)"};
+            List<string> arguments = new List<string> { "A" };
             List<string> predicates = new List<string> { "Tet" };
             List<DataStruct> dataStructs = new List<DataStruct> { new DataStruct(arguments, predicates, 0, 0) };
 
