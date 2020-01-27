@@ -16,6 +16,12 @@ public class GUI_ValidatCheck : MonoBehaviour
     [SerializeField]
     private Button _validButton = default;
 
+    //Predicates ist das ganze
+    // AB C _> Constante
+    // Tet -> Identifier
+    // Sentences
+    // Nur Felder geben wo ein Char drin ist
+
     public void Start()
     {
         _validButton.onClick.AddListener(ValidButtonClicked);
@@ -27,19 +33,16 @@ public class GUI_ValidatCheck : MonoBehaviour
         List<DataStruct> boardInDataStruct = new List<DataStruct>();
         foreach (var item in board)
         {
+            item.DebugMessage();
             boardInDataStruct.Add(new DataStruct(item.Identifier, item.ConstantList, item.Position.Item1, item.Position.Item2));
         }
         List<string> text = _textInputField.GetInputFieldText();
         Validate(text, boardInDataStruct);
     }
 
-    private void Validate(List<string> text, List<DataStruct> boardInfo )
+    private void Validate(List<string> sentences, List<DataStruct> boardInfo )
     {
-        Debug.Log("Validate");
-        Debug.Log("TExtCount: " + text.Count);
-        Debug.Log("boardInfo: " + boardInfo.Count);
-        Debug.Log("---");
-        Result<List<bool>> resultValidate = ModelValidater.ValidateModel(boardInfo, text);
+        Result<List<bool>> resultValidate = ModelValidater.ValidateModel(boardInfo, sentences);
         foreach (var item in resultValidate.Value)
         {
             Debug.Log(item);

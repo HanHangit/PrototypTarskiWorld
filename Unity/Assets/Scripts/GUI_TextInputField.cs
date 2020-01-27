@@ -17,7 +17,8 @@ public class GUI_TextInputField : MonoBehaviour
 
         foreach (var item in InputField)
         {
-            list.Add(item.text);
+            if (!string.IsNullOrEmpty(item.text))
+                list.Add(item.text);
         }
 
         return list;

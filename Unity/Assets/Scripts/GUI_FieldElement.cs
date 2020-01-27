@@ -102,6 +102,25 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
             Identifier = identifier;
             ConstantList = constantList;
         }
+
+        public void DebugMessage()
+        {
+
+            var result = "Identifier: ";
+
+            foreach (var item in Identifier)
+            {
+                result += item + " "; 
+            }
+            result += "\nConstantList: ";
+            foreach (var item in ConstantList)
+            {
+                result += item + " ";
+            }
+            
+
+            Debug.Log(result);
+        }
     }
 }
 
