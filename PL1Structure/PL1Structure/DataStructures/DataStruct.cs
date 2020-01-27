@@ -8,10 +8,10 @@ namespace PL1Structure
     {
         #region Constructor
 
-        public DataStruct(List<string> arguments, List<string> predicates, int x, int y)
+        public DataStruct(List<string> arguments, List<string> identifier, int x, int y)
         {
             Arguments = arguments;
-            Predicates = predicates;
+            Identifier = identifier;
             X = x;
             Y = y;
         }
@@ -22,7 +22,7 @@ namespace PL1Structure
         #region Public
 
         public List<string> Arguments { get; }
-        public List<string> Predicates { get; }
+        public List<string> Identifier { get; }
         public int X { get; }
         public int Y { get; }
 

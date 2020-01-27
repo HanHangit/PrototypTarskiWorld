@@ -22,15 +22,18 @@ namespace PL1Structure
                 foreach (var formulaSentence in parseSentences)
                 {
                     if (!formulaSentence.IsValid)
-                        result = Result<List<bool>>.CreateResult(false, null, formulaSentence.Message);
-                    bool isSentenceTrue = false;
-                    Predicate predicateSentence = formulaSentence.Value as Predicate;
-                    foreach (var dataSentence in parseDataStructures.Value)
-                        foreach (var pred in dataSentence.Predicates)
-                            if (pred.Equals(predicateSentence))
-                                isSentenceTrue = true;
+                        modelResults.Add(false);
+                    else
+                    {
+                        bool isSentenceTrue = false;
+                        Predicate predicateSentence = formulaSentence.Value as Predicate;
+                        foreach (var dataSentence in parseDataStructures.Value)
+                            foreach (var pred in dataSentence.Predicates)
+                                if (pred.Equals(predicateSentence))
+                                    isSentenceTrue = true;
+                        modelResults.Add(isSentenceTrue);
+                    }
 
-                    modelResults.Add(isSentenceTrue);
                 }
             }
 

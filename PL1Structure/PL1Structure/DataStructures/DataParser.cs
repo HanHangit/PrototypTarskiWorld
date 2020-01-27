@@ -24,7 +24,7 @@ namespace PL1Structure
             {
                 List<Predicate> predicates = new List<Predicate>();
 
-                foreach (var predicateInStruct in dataStruct.Predicates)
+                foreach (var predicateInStruct in dataStruct.Identifier)
                     foreach (var constantInStruct in dataStruct.Arguments)
                     {
                         Constant constant = new Constant(constantInStruct);
