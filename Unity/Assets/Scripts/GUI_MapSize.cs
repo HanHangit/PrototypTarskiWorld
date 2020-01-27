@@ -17,7 +17,8 @@ public class GUI_MapSize : MonoBehaviour
     [SerializeField]
     private Transform _anchor = default;
 
-    List<GUI_FieldElement.FieldElementEventArgs> _resultObj = new List<GUI_FieldElement.FieldElementEventArgs>();
+    private List<GUI_FieldElement.FieldElementEventArgs> _resultObj = new List<GUI_FieldElement.FieldElementEventArgs>();
+    public List<GUI_FieldElement.FieldElementEventArgs> Objs => _resultObj;
 
     [SerializeField]
     private Button _validateButton = default;
@@ -25,7 +26,7 @@ public class GUI_MapSize : MonoBehaviour
     private void Awake()
     {
         CreateMap();
-        _validateButton.onClick.AddListener(ValidateButtonPressed);
+        //_validateButton.onClick.AddListener(ValidateButtonPressed);
     }
 
 

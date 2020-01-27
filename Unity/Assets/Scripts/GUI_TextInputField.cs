@@ -9,6 +9,19 @@ public class GUI_TextInputField : MonoBehaviour
 {
     [SerializeField]
     List<TMPro.TMP_InputField> _inputFields = default;
+    public List<TMPro.TMP_InputField> InputField => _inputFields;
+
+    public List<string> GetInputFieldText()
+    {
+        List<string> list = new List<string>();
+
+        foreach (var item in InputField)
+        {
+            list.Add(item.text);
+        }
+
+        return list;
+    }
 
     [SerializeField]
     private Button _checkAllButton = default;
