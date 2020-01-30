@@ -12,7 +12,7 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
     [SerializeField]
     private int _posY = 0;
     private List<string> _identifier = new List<string>();
-	private List<string> _praedicats = new List<string>();
+	private List<string> _contants = new List<string>();
 	[SerializeField]
     private TextMeshProUGUI _positionText = default;
     [SerializeField]
@@ -49,14 +49,20 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
 
     private void ButtonClicked()
     {
-	
-
+        if(_hasElement)
+        {
+            ResetField();
+        }
     }
 
 	private void ResetField()
 	{
-		
-	}
+        _hasElement = false;
+        _identifier = new List<string>();
+        _contants = new List<string>();
+        Intern_OnTestEvent(new FieldElementEventArgs(new Tuple<int, int>(_posX, _posY), _identifier, _contants, true));
+        ResetElementImage();
+    }
 
     protected virtual void Intern_OnTestEvent(FieldElementEventArgs args)
     {
@@ -73,8 +79,8 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
 			case GUI_ObjectButton.ETyp.Identifier:
 				_identifier.Add(identifier);
 				break;
-			case GUI_ObjectButton.ETyp.Praedicat:
-				_praedicats.Add(identifier);
+			case GUI_ObjectButton.ETyp.Constant:
+				_contants.Add(identifier);
 				break;
 			default:
 				break;
@@ -83,8 +89,11 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
         _elementImage.gameObject.SetActive(true);
 
 		if(!_hasElement)
-			Intern_OnTestEvent(new FieldElementEventArgs(new Tuple<int, int>(_posX, _posY), _identifier, _praedicats, true));
-		_hasElement = true;
+        {
+            Intern_OnTestEvent(new FieldElementEventArgs(new Tuple<int, int>(_posX, _posY), _identifier, _contants, false));
+        }
+
+        _hasElement = true;
 	}
 
 	[System.Serializable]
@@ -105,7 +114,6 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
 
         public void DebugMessage()
         {
-
             var result = "Identifier: ";
 
             foreach (var item in Identifier)
@@ -117,8 +125,6 @@ public class GUI_FieldElement : MonoBehaviour, IDragableTarget
             {
                 result += item + " ";
             }
-            
-
             Debug.Log(result);
         }
     }

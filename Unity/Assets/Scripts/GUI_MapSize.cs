@@ -20,16 +20,10 @@ public class GUI_MapSize : MonoBehaviour
     private List<GUI_FieldElement.FieldElementEventArgs> _resultObj = new List<GUI_FieldElement.FieldElementEventArgs>();
     public List<GUI_FieldElement.FieldElementEventArgs> Objs => _resultObj;
 
-    [SerializeField]
-    private Button _validateButton = default;
-
     private void Awake()
     {
         CreateMap();
-        //_validateButton.onClick.AddListener(ValidateButtonPressed);
     }
-
-
 
     private void CreateMap()
     {
@@ -49,24 +43,29 @@ public class GUI_MapSize : MonoBehaviour
 
     private void TextOutput(object sender, GUI_FieldElement.FieldElementEventArgs e)
     {
-        _resultObj.Add(e);
+        if (e.IsRemoving)
+        {
+            var element = CheckIfElementInList(e);
+            if (element != null)
+            {
+                _resultObj.Remove(element);
+            }
+        }
+        else
+        {
+            _resultObj.Add(e);
+        }
     }
 
-    private void ValidateButtonPressed()
+    private GUI_FieldElement.FieldElementEventArgs CheckIfElementInList(GUI_FieldElement.FieldElementEventArgs element)
     {
-        foreach (var item in _resultObj)
+        foreach (GUI_FieldElement.FieldElementEventArgs item in _resultObj)
         {
-            Debug.Log("---");
-            Debug.Log("Element on Position: : " + item.Position.Item1 + "/" + item.Position.Item2);
-            foreach (var identifier in item.Identifier)
+            if(element.Position.Item1 == element.Position.Item1 && element.Position.Item2 == element.Position.Item2)
             {
-                Debug.Log("Identifier: " + identifier);
+                return item;
             }
-
-			foreach (var constant in item.ConstantList)
-			{
-				Debug.Log("Constant: " + constant);
-			}
         }
+        return null;
     }
 }

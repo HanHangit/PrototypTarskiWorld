@@ -7,7 +7,7 @@ public class GUI_ObjectButton : MonoBehaviour
 {
 	public enum ETyp
 	{
-		None, Identifier, Praedicat
+		None, Identifier, Constant
 	}
 
 	[SerializeField]

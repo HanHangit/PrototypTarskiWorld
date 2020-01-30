@@ -16,6 +16,9 @@ public class GUI_ValidatCheck : MonoBehaviour
     [SerializeField]
     private Button _validButton = default;
 
+    [SerializeField]
+    private bool _debugMode = false;
+
     //Predicates ist das ganze
     // AB C _> Constante
     // Tet -> Identifier
@@ -25,48 +28,76 @@ public class GUI_ValidatCheck : MonoBehaviour
     public void Start()
     {
         _validButton.onClick.AddListener(ValidButtonClicked);
+        foreach (var item in _textInputField.GetTextInputElement())
+        {
+            item.ValidateButton.onClick.AddListener(() => SingleValidateButtonClicked(item));
+        }
+    }
+
+    private void SingleValidateButtonClicked(GUI_TextInputElement item)
+    {
+        if (item.IsEmptyString())
+        {
+            Debug.Log("Empty String and Button can be pressed. Something is wrong -> button can not to be interactable");
+        }
+        else
+        {
+            List<string> text = new List<string>();
+            text.Add(item.GetInputText());
+            var list = new List<GUI_TextInputElement>();
+            list.Add(item); 
+            Validate(list, text, GetBoardInformation());
+        }
     }
 
     private void ValidButtonClicked()
+    {
+       List<GUI_TextInputElement> textElements = _textInputField.GetGuiTextElementsWithText();
+       Validate(textElements, GetTextListFromTextElement(textElements), GetBoardInformation());
+    }
+
+    private List<string> GetTextListFromTextElement(List<GUI_TextInputElement> textElements)
+    {
+        List<string> result = new List<string>();
+        foreach (var item in textElements)
+        {
+            if (item.IsEmptyString())
+            {
+                Debug.Log("Text shoult be empty. Something goes wrong here");
+            }
+            else
+            {
+                result.Add(item.GetInputText());
+            }
+        }
+        return result;
+    }
+
+    private List<DataStruct> GetBoardInformation()
     {
         List<GUI_FieldElement.FieldElementEventArgs> board = _mapSize.Objs;
         List<DataStruct> boardInDataStruct = new List<DataStruct>();
         foreach (var item in board)
         {
-            item.DebugMessage();
+            if (_debugMode)
+            {
+                item.DebugMessage();
+            }
+
             boardInDataStruct.Add(new DataStruct(item.Identifier, item.ConstantList, item.Position.Item1, item.Position.Item2));
         }
-        List<string> text = _textInputField.GetInputFieldText();
-        Validate(text, boardInDataStruct);
+
+        return boardInDataStruct;
     }
 
-    private void Validate(List<string> sentences, List<DataStruct> boardInfo )
+    private void Validate(List<GUI_TextInputElement> elements, List<string> sentences, List<DataStruct> boardInfo )
     {
         Result<List<bool>> resultValidate = ModelValidater.ValidateModel(boardInfo, sentences);
-        foreach (var item in resultValidate.Value)
+        var inputElements = _textInputField.GetTextInputElement();
+        for (int i = 0; i < resultValidate.Value.Count; i++)
         {
-            Debug.Log(item);
+
+            elements[i].Validate(resultValidate.Value[i]);
         }
     }
-
-    //private void Start()
-    //{
-    //    Result<Formula>[] result = ModelParser.ParseSentences(_input);
-
-    //    if (result[0].IsValid)
-    //        if (result[0].Value is Predicate predicate)
-    //        {
-    //            Debug.Log("Predicate:" + predicate.Identifier);
-    //            Debug.Log("Argument:" + ((Constant)predicate.Arguments[0]).Value);
-    //        }
-
-    //    List<string> sentences = new List<string> { "Tet(a)" };
-    //    List<string> arguments = new List<string> { "a" };
-    //    List<string> predicates = new List<string> { "Tet" };
-    //    List<DataStruct> dataStructs = new List<DataStruct> { new DataStruct(arguments, predicates, 0, 0) };
-
-  
-
-    //    Debug.Log("Sentence is " + resultValidate.Value[0]);
-    //}
 }
