@@ -3536,7 +3536,7 @@ MonoBehaviour:
   _currentTyp: 1
   _button: {fileID: 452204261}
   _image: {fileID: 177061559}
-  _identifier: A
+  _identifier: a
 --- !u!114 &452204260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,7 +4108,7 @@ MonoBehaviour:
   _currentTyp: 1
   _button: {fileID: 533270040}
   _image: {fileID: 108429567}
-  _identifier: B
+  _identifier: b
 --- !u!114 &533270039
 MonoBehaviour:
   m_ObjectHideFlags: 0
